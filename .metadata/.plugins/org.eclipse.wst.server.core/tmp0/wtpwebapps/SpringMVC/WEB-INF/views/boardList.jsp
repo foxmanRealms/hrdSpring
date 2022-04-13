@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div class="container">
+  <h2>Spring MVC BOARD</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">Board List</div>
+    <div class="panel-body">
+    	<table class="table table-hover table-bordered">
+    		<tr class="active">
+    			<td>번호</td>
+    			<td>제목</td>
+    			<td>조회수</td>
+    			<td>작성자</td>
+    			<td>작성일</td>
+    		</tr>
+    		
+    		<!-- 숙제. model안에 저장해 놓은 list 안의 게시글 정보를 전부 출력하시오
+    		* for문 활용. 참고로 model 안에 저장된 데이터는 
+    		request객체 안에 되어있다.
+    		request.getAttribute()를 통해 꺼내기 가능 
+    		 --> 
+    		
+    		
+    		<tr>
+    			<td>1</td>
+    			<td>오늘은 수요일 생선까스! 까스! 까스!</td>
+    			<td>15</td>
+    			<td>급양관리관</td>
+    			<td>2022.04.13</td>
+    		</tr>
+    		<tr>
+    			<td>2</td>
+    			<td>자 밖에 햇빛이 너무 좋다 일광건조 하자~</td>
+    			<td>33</td>
+    			<td>행정보급관</td>
+    			<td>2022.04.12</td>
+    		</tr>
+    	</table>
+    </div>
+    <div class="panel-body">지능형 IoT 이정명</div>
+  </div>
+</div>
+	
+</body>
+</html>

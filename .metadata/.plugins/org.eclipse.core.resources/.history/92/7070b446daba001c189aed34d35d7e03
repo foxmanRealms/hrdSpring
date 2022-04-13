@@ -1,0 +1,18 @@
+package kr.smhrd.mapper;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class BoardVO {
+	private int idx; //  번호
+	private String title; //  제목
+	private String contents; //  내용
+	private int count; //  조회수
+	private String writer; //  작성자
+	private String indate; //  작성일
+	
+}
