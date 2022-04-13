@@ -1,0 +1,13 @@
+package kr.smhrd.mapper;
+
+public class BoardVO {
+	private int idx; //  번호
+	private String title; //  제목
+	private String contents; //  제목
+	private String title; //  제목
+	private String indate; //  작성일
+	private String writer; //  작성자
+	private int cnt; //  조회수
+	private int idx; //  번호
+	private int idx; //  번호
+}

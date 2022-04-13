@@ -1,0 +1,17 @@
+package kr.smhrd.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class BoardController {
+
+	// web/boardList.do라고 요청했을 때 실행되는 메소드
+	@RequestMapping("/boardList.do")
+	public String boardList() {
+		System.out.println("게시판 전체보기 실행");
+		
+		return "boardList"	;	
+	}
+	
+}

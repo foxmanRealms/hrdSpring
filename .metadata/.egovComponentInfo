@@ -1,0 +1,23 @@
+
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cmm	공통
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.com	협업공통
+[2021.06.08 10:16:30] Installed component:	egovframework.com.uat.uia	일반로그인
+[2021.06.08 10:16:30] Installed component:	egovframework.com.uat.uap	로그인정책관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.drm	부서권한관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.rgm	권한그룹관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.rmt	롤관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.ram	권한관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.gmt	그룹관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sec.security	보안
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.tpl	게시판 템플릿
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.bbs	블로그관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.cmt	댓글관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.scp	스크랩기능
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.stf	만족도조사
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.cmy	커뮤니티관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.bbs	블로그관리
+[2021.06.08 10:16:30] Installed component:	egovframework.com.cop.ems	메일연동 인터페이스
+[2021.06.08 10:16:30] Installed component:	egovframework.com.sym.cal	일반달력
+[2021.06.08 10:16:30] Installed component:	egovframework.com.utl.fcc	유틸리티
+[2021.06.08 10:16:30] Installed component:	egovframework.com.utl.wed	웹에디터
+[2021.06.08 10:16:30] Installed component:	egovframework.com.utl.sim	시스템정보확인
