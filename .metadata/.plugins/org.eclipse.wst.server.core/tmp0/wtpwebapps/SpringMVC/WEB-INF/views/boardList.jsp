@@ -1,5 +1,9 @@
+<%@page import="kr.smhrd.mapper.BoardVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +35,7 @@
     		request객체 안에 되어있다.
     		request.getAttribute()를 통해 꺼내기 가능 
     		 --> 
+    		   
     		
     		
     		<tr>
@@ -47,6 +52,22 @@
     			<td>행정보급관</td>
     			<td>2022.04.12</td>
     		</tr>
+    		<c:forEach var="vo" items="${list}" varStatus="i">
+    		
+    		<tr>
+    			<td>${i.count}</td>
+    			<td>${vo.title}</td>
+    			<td>${vo.count}</td>
+    			<td>${vo.writer}</td>
+    			<td>${vo.indate}</td>
+    			
+    			<%--  선생님 코드 표현식으로 순번을 꺼냈을때
+    			<td><%= i+1 %></td> 번호만 이렇게 뽑았다.중간에 게시글이 삭제됐을때
+    			이상해지는 것을 대비
+    			 --%> 
+    			
+    		</tr>
+    		</c:forEach>
     	</table>
     </div>
     <div class="panel-body">지능형 IoT 이정명</div>

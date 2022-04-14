@@ -1,0 +1,8 @@
+package kr.smhrd.mapper;
+
+public class BoardMapper {
+
+	public List<BoardVO> boardList() {
+		
+	}
+}

@@ -1,0 +1,21 @@
+-- 게시판 테이블 생성
+
+create table board(
+	idx int not null auto_increment,
+	title varchar(1000) not null,
+	contents varchar(3000) not null,
+	count int not null default 0,
+	writer varchar(100) not null,
+	indate datetime not null default now(),
+	primary key(idx)
+)
+
+--테이블 인서트
+
+insert into board(title,contents,writer)
+values('조보아씨 일루와봐유','이거 한번 먹어보세유','이연복')
+
+--테이블 셀렉트
+
+select * from board
+
