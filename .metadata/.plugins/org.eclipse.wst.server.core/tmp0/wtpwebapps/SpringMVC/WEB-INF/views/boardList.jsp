@@ -35,28 +35,12 @@
     		request객체 안에 되어있다.
     		request.getAttribute()를 통해 꺼내기 가능 
     		 --> 
-    		   
     		
-    		
-    		<tr>
-    			<td>1</td>
-    			<td>오늘은 수요일 생선까스! 까스! 까스!</td>
-    			<td>15</td>
-    			<td>급양관리관</td>
-    			<td>2022.04.13</td>
-    		</tr>
-    		<tr>
-    			<td>2</td>
-    			<td>자 밖에 햇빛이 너무 좋다 일광건조 하자~</td>
-    			<td>33</td>
-    			<td>행정보급관</td>
-    			<td>2022.04.12</td>
-    		</tr>
     		<c:forEach var="vo" items="${list}" varStatus="i">
     		
     		<tr>
     			<td>${i.count}</td>
-    			<td>${vo.title}</td>
+    			<td><a href="boardContents.do?idx=${vo.idx}">${vo.title}</a></td>
     			<td>${vo.count}</td>
     			<td>${vo.writer}</td>
     			<td>${vo.indate}</td>
@@ -69,6 +53,10 @@
     		</tr>
     		</c:forEach>
     	</table>
+    	<!-- <button class="btn btn-primary btn-sm">글쓰기</button>
+    	<button class="btn btn-info btn-sm">글쓰기</button> -->
+    	<a href="boardInsertForm.do"> <button class="btn btn-success btn-sm">글쓰기</button></a>
+    	<!--<button class="btn btn-warning btn-sm">글쓰기</button> -->
     </div>
     <div class="panel-body">지능형 IoT 이정명</div>
   </div>
