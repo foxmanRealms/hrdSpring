@@ -12,6 +12,15 @@
 		select * from board where idx = #{idx}
 	</select>
 	
+	<update id="boardUpdate" parameterType="kr.smhrd.mapper.BoardVO">
+		update board set title= #{title}, contents=#{contents} where idx=#{idx}
+	</update>
+	
+	<delete id="boardDelete" parameterType="kr.smhrd.mapper.BoardVO">
+		delete from board where idx=#{idx}
+	</delete>
+	
+	
 	
 	
 	

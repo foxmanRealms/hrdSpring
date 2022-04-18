@@ -1,0 +1,56 @@
+<%@page import="kr.smhrd.mapper.BoardVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="container">
+		<h2>Spring MVC BOARD</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">Board Insert</div>
+			<div class="panel-body">
+				<table class="table table-boardered tabled-hover">
+					<tr>
+						<td>제목</td>
+						<td>
+							<input class="form-control" type="text" value="${vo.title }">
+						</td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td>${vo.writer }</td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td>
+						<textarea class="form-control" rows="5">
+						${vo.contents }
+						</textarea>
+						</td>
+					</tr>
+				</table>
+				<button>뒤로가기</button>
+				<button>수정</button>
+				<button>삭제</button>
+
+				<div class="panel-body">지능형 IoT 이정명</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
