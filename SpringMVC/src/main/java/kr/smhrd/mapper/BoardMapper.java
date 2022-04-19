@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardMapper {
-
 	public List<BoardVO> boardList();
 
 	public void boardInsert(BoardVO vo);
@@ -16,4 +15,6 @@ public interface BoardMapper {
 	public void boardUpdate(BoardVO vo);
 
 	public void boardDelete(int idx);
+
+	public void count(int idx);
 }

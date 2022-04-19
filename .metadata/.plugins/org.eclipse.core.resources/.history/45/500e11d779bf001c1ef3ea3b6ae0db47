@@ -1,0 +1,22 @@
+package kr.smhrd.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+@Mapper
+public interface BoardMapper {
+	@Select("select * from board order by indate desc")
+	public List<BoardVO> boardList();
+
+	public void boardInsert(BoardVO vo);
+
+	public BoardVO boardContents(int idx);
+
+	public void boardUpdate(BoardVO vo);
+
+	public void boardDelete(int idx);
+
+	public void count(int idx);
+}

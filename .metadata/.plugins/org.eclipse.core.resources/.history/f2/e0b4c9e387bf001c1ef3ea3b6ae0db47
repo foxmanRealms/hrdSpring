@@ -1,0 +1,30 @@
+package kr.smhrd.mapper;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class MemberVO {
+	
+	private String id; //  아이디
+	@NonNull
+	private String title; //  제목
+	@NonNull
+	private String contents; //  내용
+	private int count; //  조회수
+	@NonNull
+	private String writer; //  작성자
+	private String indate; //  작성일
+	
+	id varchar(100),
+	pw varchar(100) not null,
+	nick varchar(100) not null,
+	phone varchar(100) not null,
+	primary key(id)
+}

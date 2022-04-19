@@ -5,12 +5,24 @@ create table board(
 	title varchar(1000) not null,
 	contents varchar(3000) not null,
 	count int not null default 0,
-	writer varchar(100) not null,
+	writer varcWar(100) not null,
 	indate datetime not null default now(),
 	primary key(idx)
 )
 
+create table member(
+	id varchar(100),
+	pw varchar(100) not null,
+	nick varchar(100) not null,
+	phone varchar(100) not null,
+	primary key(id)
+)
+
+
 --테이블 인서트
+
+insert into member values('hodoo', '1234','호두아빠','010-4611-5278')
+
 
 insert into board(title,contents,writer)
 values('조보아씨 일루와봐유','이거 한번 먹어보세유','이연복');
@@ -46,3 +58,4 @@ values('Are you mad?','크크루삥뽕','Happy Troll');
 
 select * from board
 
+select * from member

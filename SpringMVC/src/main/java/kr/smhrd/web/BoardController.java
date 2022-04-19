@@ -2,6 +2,8 @@ package kr.smhrd.web;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +17,16 @@ import kr.smhrd.mapper.BoardVO;
 @Controller
 public class BoardController {
 
-	@Autowired
+	@Inject
 	private BoardMapper mapper;
 
 	// web/boardList.do라고 요청했을 때 실행되는 메소드
 	@RequestMapping("/boardList.do")
-	public String boardList(Model model) {
+	public void boardList(Model model) {
 		System.out.println("게시판 전체보기 실행");
 
 		List<BoardVO> list = mapper.boardList();
 		model.addAttribute("list", list);
-
-		return "boardList";
 
 		// 번호, 제목, 내용, 조회수, 작성자, 작성일
 //		BoardVO vo1 =new BoardVO(3,"오늘은 수요일 인데용","하하 너무 좋다",3,"박병관","2022-04-13");
@@ -50,9 +50,8 @@ public class BoardController {
 	// web/boardInsertForm.do 라고 요청했을 때 실행되는 메소드
 
 	@RequestMapping("/boardInsertForm.do")
-	public String boardInsertForm() {
+	public void boardInsertForm() {
 		System.out.println("글쓰기 페이지 이동");
-		return "boardInsertForm";
 	}
 
 	// web/boardInsert.do 라고 요청했을 때 실행되는 메소드
@@ -68,12 +67,13 @@ public class BoardController {
 
 	// web/boardContents.do라고 요청했을 때 실행되는 메소드
 	@RequestMapping("/boardContents.do")
-	public String boardContents(int idx, Model model) {
+	public void boardContents(int idx, Model model) {
 		System.out.println("글보기 기능 실행");
+		mapper.count(idx);
 		BoardVO vo = mapper.boardContents(idx);
 		model.addAttribute("vo", vo);
+		System.out.println("변경");
 
-		return "boardContents";
 	}
 
 	// web/boardUpdate.do라고 요청했을 때 실행되는 메소드
@@ -84,13 +84,14 @@ public class BoardController {
 
 		return "redirect:/boardList.do";
 	}
-	// web/boardDelete.do라고 요청했을 때 실행되는 메소드
-		@RequestMapping("/boardDelete.do")
-		public String boardDelete(int idx) {
-			System.out.println("글 삭제 기능 실행");
-			mapper.boardDelete(idx);
 
-			return "redirect:/boardList.do";
-		}
+	// web/boardDelete.do라고 요청했을 때 실행되는 메소드
+	@RequestMapping("/boardDelete.do")
+	public String boardDelete(int idx) {
+		System.out.println("글 삭제 기능 실행");
+		mapper.boardDelete(idx);
+
+		return "redirect:/boardList.do";
+	}
 
 }
