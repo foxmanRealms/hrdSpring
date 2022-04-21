@@ -1,10 +1,9 @@
 package kr.smhrd.web;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.smhrd.mapper.MemberMapper;
@@ -18,16 +17,16 @@ public class MemberController {
 	// web/login.do를 요청했을 때 실행되는 메소드
 	@RequestMapping("/login.do")
 	public void login() {
-		System.out.println("로그인");
+		System.out.println("-로그인");
 	}
 
 	// web/join.do를 요청했을 때 실행되는 메소드
 	@RequestMapping("/join.do")
 	public void join() {
-		System.out.println("join");
+		System.out.println("-join");
 	}
 
-	// web/joininsert.do를 요청했을 때 실행되는 메소드
+	// web/joinInsert.do를 요청했을 때 실행되는 메소드
 	@RequestMapping("/joinInsert.do")
 	public String joinInsert(MemberVO vo) {
 		System.out.println("joinInsert");
@@ -36,4 +35,52 @@ public class MemberController {
 		return "redirect:/login.do";
 	}
 
+	// web/loginSelect.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/loginSelect.do")
+	public String loginSelect(MemberVO vo, HttpSession session) {
+		System.out.println("-loginSelect");
+		MemberVO info = mapper.loginSelect(vo);
+
+		// System.out.println("loginSelect "+info); // info 세션정보가 출력된다
+
+		if (info != null) {
+			session.setAttribute("info", info);
+		}
+
+		return "redirect:/boardList.do";
+	}
+
+	// web/logout.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		System.out.println("-logout");
+
+		session.removeAttribute("info");
+
+		return "redirect:/boardList.do";
+	}
+
+	// web/update.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/update.do")
+	public void update() {
+		System.out.println("-update");
+	}
+
+	// web/updateService.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/updateService.do")
+	public String updateService(MemberVO vo, HttpSession session) {
+		System.out.println("-updateService");
+		mapper.updateService(vo);
+
+		session.setAttribute("info", vo);
+
+		// MemberVO info = mapper.loginSelect(vo);
+
+		// System.out.println("정보수정 " + info); // info 세션정보가 출력된다
+
+		// if (info != null) {
+		// session.setAttribute("info", info);
+		// }
+		return "redirect:/boardList.do";
+	}
 }

@@ -23,9 +23,22 @@
 		<h2>Spring MVC BOARD</h2>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Board List 
-				<span style="float:right">
-					<a href="login.do"><button class="btn btn-info btn-sm">로그인</button>  </a>
+				Board List <span style="float: right"> 
+				<c:choose>
+						<c:when test="${not empty info}">
+							${info.nick} 님 환영합니다!
+							<a href="logout.do"><button class="btn btn-info btn-sm">로그아웃</button></a>
+							<a href="update.do"><button class="btn btn-info btn-sm">회원정보수정</button></a>
+							<c:if test="${info.id eq 'admin'}">
+							<a href="memberList.do"><button class="btn btn-info btn-sm">회원정보보기</button> </a>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+						<a href="login.do"><button class="btn btn-info btn-sm">로그인</button>
+				</a>
+						</c:otherwise>
+						
+					</c:choose> 
 				</span>
 			</div>
 			<div class="panel-body">

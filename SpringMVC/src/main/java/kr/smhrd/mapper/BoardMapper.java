@@ -17,4 +17,5 @@ public interface BoardMapper {
 	public void boardDelete(int idx);
 
 	public void count(int idx);
+
 }

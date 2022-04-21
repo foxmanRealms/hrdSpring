@@ -6,6 +6,12 @@
 		insert into Member (id,pw,nick,phone)
 		values(#{id},#{pw},#{nick},#{phone})
 	</insert>
+	  <select id="loginSelect" parameterType="kr.smhrd.mapper.MemberVO" resultType="kr.smhrd.mapper.MemberVO">
+		select * from Member where id= #{id} and pw=#{pw};
+	</select>
+    <update id="updateService" parameterType="kr.smhrd.mapper.BoardVO" >
+		update Member set pw=#{pw}, nick=#{nick}, phone=#{phone} where id=#{id}
+	</update>
     
 	<!--  <select id="boardList" resultType="kr.smhrd.mapper.BoardVO">
 		select * from board order by indate desc;

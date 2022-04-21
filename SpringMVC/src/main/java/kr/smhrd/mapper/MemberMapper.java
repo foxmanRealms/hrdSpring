@@ -9,6 +9,12 @@ import org.springframework.ui.Model;
 public interface MemberMapper {
 
 	void joinInsert(MemberVO vo);
+
+	MemberVO loginSelect(MemberVO vo);
+
+	MemberVO logout(MemberVO vo);
+
+	void updateService(MemberVO vo);
 	
 	//public List<BoardVO> boardList();
 

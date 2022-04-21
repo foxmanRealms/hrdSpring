@@ -1,0 +1,68 @@
+package kr.smhrd.web;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.mapper.MemberVO;
+
+@Controller
+public class MemberController {
+	@Inject
+	private MemberMapper mapper;
+
+	// web/login.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/login.do")
+	public void login() {
+		System.out.println("로그인");
+	}
+
+	// web/join.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/join.do")
+	public void join() {
+		System.out.println("join");
+	}
+
+	// web/joinInsert.do를 요청했을 때 실행되는 메소드
+	@RequestMapping("/joinInsert.do")
+	public String joinInsert(MemberVO vo) {
+		System.out.println("joinInsert");
+		mapper.joinInsert(vo);
+
+		return "redirect:/login.do";
+	}
+	// web/loginSelect.do를 요청했을 때 실행되는 메소드
+		@RequestMapping("/loginSelect.do")
+		public String loginSelect(MemberVO vo,HttpSession session) {
+			System.out.println("loginSelect");
+			MemberVO info = mapper.loginSelect(vo);
+			
+			//System.out.println("loginSelect "+info); // info 세션정보가 출력된다
+			
+			if(info != null) {
+				session.setAttribute("info", info);
+			}
+			
+			return "redirect:/boardList.do";
+		}
+		
+		// web/logout.do를 요청했을 때 실행되는 메소드
+				@RequestMapping("/loginout.do")
+				public String logout(MemberVO vo,HttpSession session) {
+					System.out.println("logout");
+					MemberVO info = mapper.logout(vo);
+					info=null;
+					System.out.println("logout "+info); // info 세션정보가 출력된다
+					
+					if(info != null) {
+						session.setAttribute("info", info);
+					}
+					
+					return "redirect:/boardList.do";
+				}
+	
+}

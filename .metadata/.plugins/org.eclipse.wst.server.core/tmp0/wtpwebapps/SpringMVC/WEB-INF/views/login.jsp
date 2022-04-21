@@ -25,15 +25,20 @@
 			<div class="panel-heading">Login Select</div>
 			<div class="panel-body">
 
-				<form class="form-horizontal" method="post" action="join.do">
+				<form class="form-horizontal" method="post" action="loginSelect.do">
 					<table style="width:400px; text-align:center; margin:auto;" class="table table-hover table-bordered">
+						<!--로그인 버튼을 누르면 loginSelect.do라는 곳으로 id와 pw가 넘어간다
+						  loginSelect.do를 요청했을 때 해당하는 id와 pw가 일치하는 회원을 찾았다면
+						  해당 회원의 id,pw,nick,phone 정보를 session에 담아 boardList.jsp로 이동
+						  -->
+						
 						<tr>
 							<td>아이디</td>
-							<td><input class="form-control" type="text"></td>
+							<td><input name="id" class="form-control" type="text"></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input class="form-control" type="password"></td>
+							<td><input name="pw"  class="form-control" type="password"></td>
 						</tr>
 						<tr>
 							<td colspan="2">
