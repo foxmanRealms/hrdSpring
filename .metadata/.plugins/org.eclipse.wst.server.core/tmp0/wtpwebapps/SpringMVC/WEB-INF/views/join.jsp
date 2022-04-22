@@ -39,19 +39,26 @@
 						class="table table-hover table-bordered">
 						<tr>
 							<td>아이디</td>
-							<td><input name="id" class="form-control" type="text"></td>
+							<td><input id="id" style="float: left; width: 230px"
+								required="required" name="id" class="form-control" type="text">
+								<button type="button" id="idCheck" style="float: left"
+									class="btn btn-info btn-sm">중복체크</button> <br> <br> <span
+								id="result">아이디 중복확인을 해주세요</span></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input name="pw" class="form-control" type="password"></td>
+							<td><input readonly="readonly" name="pw"
+								class="form-control join" type="password"></td>
 						</tr>
 						<tr>
 							<td>닉네임</td>
-							<td><input name="nick" class="form-control" type="text"></td>
+							<td><input readonly="readonly" name="nick"
+								class="form-control join" type="text"></td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
-							<td><input name="phone" class="form-control" type="text"></td>
+							<td><input readonly="readonly" name="phone"
+								class="form-control join" type="text"></td>
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -69,6 +76,54 @@
 			<div class="panel-body">지능형 IoT 이정명</div>
 		</div>
 	</div>
+
+
+	<script type="text/javascript">
+		$('.join').click(function() {
+			if (this.getAttribute('readonly') == "readonly") {
+				alert('아이디 중복체크를 먼저 해주세요')
+			}
+		});
+		$('#idCheck').click(function() {
+			var id = $('#id').val();
+
+			$.ajax({
+				url : "idCheck.do",
+				type : "post",
+				data : {
+					"id" : id
+				},
+				success : loadJson,
+				error : function(e) {
+					console.log(e);
+				}
+			});
+		});
+		/*  
+		$('#id').keyup(function(){
+			var id=$('#id').val();
+					$.ajax({
+						url: "idCheck.do",
+						type:"post",
+						data:{"id":id},
+						success : loadJson,
+						error : function(e){
+							console.log(e);
+ */ /* 키 업이벤트로 바꾸는 방식.  키보드를 입력했다가 떼면 발동한다. */
+		function loadJson(data) {
+			if (data.id == undefined) {
+				console.log("아이디 사용가능")
+				$('.join').removeAttr('readonly');
+				$('#result').text('사용가능한 아이디입니다.')
+				$('#result').css('color', 'blue')
+			} else {
+				console.log("아이디 불가능")
+				$('.join').attr('readonly', true)
+				$('#result').text('중복된 아이디입니다.')
+				$('#result').css('color', 'red')
+			}
+		};
+	</script>
 
 </body>
 </html>

@@ -15,6 +15,10 @@ public interface MemberMapper {
 	MemberVO logout(MemberVO vo);
 
 	void updateService(MemberVO vo);
+
+	List<MemberVO> memberList();
+
+	MemberVO idCheck(String id);
 	
 	//public List<BoardVO> boardList();
 

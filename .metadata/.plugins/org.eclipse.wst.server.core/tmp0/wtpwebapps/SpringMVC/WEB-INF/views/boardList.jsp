@@ -23,23 +23,28 @@
 		<h2>Spring MVC BOARD</h2>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Board List <span style="float: right"> 
-				<c:choose>
+				Board List <span style="float: right"> <c:choose>
 						<c:when test="${not empty info}">
 							${info.nick} 님 환영합니다!
 							<a href="logout.do"><button class="btn btn-info btn-sm">로그아웃</button></a>
 							<a href="update.do"><button class="btn btn-info btn-sm">회원정보수정</button></a>
 							<c:if test="${info.id eq 'admin'}">
-							<a href="memberList.do"><button class="btn btn-info btn-sm">회원정보보기</button> </a>
+								<!--  <a href="memberList.do"><button class="btn btn-info btn-sm">회원정보보기</button> </a> -->
+								<button style="width: 100px;" id="memberList"
+									class="btn btn-info btn-sm">회원정보보기</button>
 							</c:if>
 						</c:when>
 						<c:otherwise>
-						<a href="login.do"><button class="btn btn-info btn-sm">로그인</button>
-				</a>
+							<a href="login.do"><button class="btn btn-info btn-sm">로그인</button>
+							</a>
 						</c:otherwise>
-						
-					</c:choose> 
+
+					</c:choose>
 				</span>
+
+				<div id="memberView" style="width: 100%;"></div>
+
+
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover table-bordered">
@@ -84,6 +89,63 @@
 			<div class="panel-body">지능형 IoT 이정명</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		$("#memberList").click(function() {
+			//console.log('클릭감지')
+			$.ajax({
+				url : "memberList.do",
+				type : "get", //관리자니까 get post 상관없다.  대소문자도 상관없다
+				dataType : "JSON",
+				//data :{key :value } // 보낼 데이터를 넣는 공간 
+				success : resultJson, // 서버통신이 문제없이 성공했을 때 실행시킬 함수명
+				error : function(e) {
+					console.log(e);
+				} //통신이 안됐을때
+
+			});
+
+		});
+
+		function resultJson(data) {
+			console.log(data);
+			 
+			var btn_text=$('#memberList').text();
+			if(btn_text=='회원정보보기'){
+				$('#memberList').text('닫기') 
+			}else{
+				$('#memberList').text('회원정보보기') 
+			}  
+			
+					
+			var html=" <table class='table table-hover table-bordered'>";
+			html+="<tr>";
+			html+="<td>번호</td><td>아이디</td><td>비밀번호</td>";
+			html+="<td>닉네임</td><td>전화번호</td>";
+			html+="</tr>";
+			$.each(data, (index,obj) => {
+				html+="<tr>";
+				html+="<td>"+index +"</td>";
+				html+="<td>"+obj.id +"</td>";
+				html+="<td>"+obj.pw +"</td>";
+				html+="<td>"+obj.nick +"</td>";
+				html+="<td>"+obj.phone +"</td>";
+				html+="</tr>";
+			} ); // 제이쿼리 반복문 
+			
+			html+="</table>";
+			$("#memberView").html(html);
+			
+			if  ( $("#memberView").css('display') =='none') {
+				$("#memberView").slideDown(1500);
+			}else{
+				$("#memberView").slideUp(1500);
+			}
+			
+		}
+		
+		
+	</script>
 
 </body>
 </html>

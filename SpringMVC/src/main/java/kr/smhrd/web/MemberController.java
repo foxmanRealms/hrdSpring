@@ -1,10 +1,13 @@
 package kr.smhrd.web;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.mapper.MemberMapper;
 import kr.smhrd.mapper.MemberVO;
@@ -83,4 +86,25 @@ public class MemberController {
 		// }
 		return "redirect:/boardList.do";
 	}
+	
+	//web/memberList.do를 요청했을때 실행되는 메소드
+	@RequestMapping("/memberList.do")
+	public @ResponseBody List<MemberVO> memberList() {
+		System.out.println("멤버목록 비동기통신");
+		List<MemberVO> list= mapper.memberList(); // 보내야할 정보는 없고, 받아와야할 정보들이 존재한다
+		/*
+		  for (int i = 0; i < list.size(); i++) {
+		  System.out.println(list.get(i).toString());
+		 */ // 리스트 확인 차원에서 tostring으로 찍어준다
+					
+		System.out.println(list.size());
+		return list ;
+	}
+	
+	//web/idCheck.do를 요청했을때 실행되는 메소드
+		@RequestMapping("/idCheck.do")
+		public @ResponseBody MemberVO idCheck(String id) {
+			MemberVO vo= mapper.idCheck(id); 
+			return vo ;
+		}
 }
