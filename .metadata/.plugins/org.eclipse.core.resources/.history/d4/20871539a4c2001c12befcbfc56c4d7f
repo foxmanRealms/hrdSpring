@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.BookMapper">
+	
+	 <select id="boardList" resultType="kr.smhrd.mapper.BookVO">
+		select * from board order by indate desc;
+	</select>
+	<insert id="boardInsert" parameterType="kr.smhrd.mapper.BookVO">
+		insert into board(title,contents,writer)
+		values(#{title},#{contents},#{writer})
+	</insert>
+	
+	
+		
+</mapper>

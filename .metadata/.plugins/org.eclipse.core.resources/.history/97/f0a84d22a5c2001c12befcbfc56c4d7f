@@ -1,0 +1,73 @@
+package kr.book.bshop;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.book.mapper.BookMapper;
+import kr.book.mapper.BookVO;
+import kr.smhrd.mapper.BoardMapper;
+import kr.smhrd.mapper.BoardVO;
+import kr.smhrd.mapper.MemberVO;
+
+@Controller
+public class BookController {
+
+	@Inject
+	private BookMapper mapper;
+
+	@RequestMapping("/bookList.do")
+	public void bookList(Model model) {
+		System.out.println("게시판 전체보기 실행");
+
+		List<BookVO> list = mapper.bookList();
+		model.addAttribute("list", list);
+	}
+		
+				
+
+	@RequestMapping("/bookInsert.do")
+	public String bookInsert(BookVO vo) {
+		System.out.println("-insert");
+		System.out.println(vo.toString());
+
+		mapper.bookInsert(vo);
+
+		return "redirect:/bookList.do";
+	}
+
+	// web/boardContents.do라고 요청했을 때 실행되는 메소드
+	@RequestMapping("/boardContents.do")
+	public void boardContents(int idx, Model model) {
+		System.out.println("글보기 기능 실행");
+		mapper.count(idx);
+		BoardVO vo = mapper.boardContents(idx);
+		model.addAttribute("vo", vo);
+		System.out.println("변경");
+
+	}
+
+	// web/boardUpdate.do라고 요청했을 때 실행되는 메소드
+	@RequestMapping("/boardUpdate.do")
+	public String boardUpdate(BoardVO vo) {
+		System.out.println("글 수정 기능 실행");
+		mapper.boardUpdate(vo);
+
+		return "redirect:/boardList.do";
+	}
+
+	// web/boardDelete.do라고 요청했을 때 실행되는 메소드
+	@RequestMapping("/boardDelete.do")
+	public String boardDelete(int idx) {
+		System.out.println("글 삭제 기능 실행");
+		mapper.boardDelete(idx);
+
+		return "redirect:/boardList.do";
+	}
+
+}
